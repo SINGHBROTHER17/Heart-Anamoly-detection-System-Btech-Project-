@@ -1,0 +1,35 @@
+{
+  "folders": [
+    {
+      "name": "🏠 Heart Anomaly Detection",
+      "path": "."
+    },
+    {
+      "name": "⚙️  API (Phase 4)",
+      "path": "api"
+    },
+    {
+      "name": "📱 Frontend (Phase 5)",
+      "path": "frontend"
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:🏠 Heart Anomaly Detection}/.venv/bin/python",
+    "python.analysis.extraPaths": [
+      "${workspaceFolder:🏠 Heart Anomaly Detection}",
+      "${workspaceFolder:🏠 Heart Anomaly Detection}/api"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "ms-python.debugpy",
+      "charliermarsh.ruff",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "ms-azuretools.vscode-docker"
+    ]
+  }
+}

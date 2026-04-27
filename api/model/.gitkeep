@@ -1,0 +1,2 @@
+# Place calibrated_model.pt here after training in Colab.
+# This file is gitignored so keep this .gitkeep so the directory persists.

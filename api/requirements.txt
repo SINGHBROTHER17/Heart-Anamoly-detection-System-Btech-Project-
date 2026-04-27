@@ -1,0 +1,19 @@
+# API dependencies
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29,<1.0
+pydantic>=2.6,<3.0
+python-multipart>=0.0.9    # required for multipart/form-data (file uploads)
+
+# Preprocessing + model
+numpy>=1.26,<3.0
+scipy>=1.11,<2.0
+pandas>=2.0,<3.0
+torch>=2.1,<3.0
+
+# Rate limiting + logging
+slowapi>=0.1.9
+structlog>=24.1
+
+# Testing
+pytest>=7.4,<9.0
+httpx>=0.27,<1.0

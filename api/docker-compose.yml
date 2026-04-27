@@ -1,0 +1,33 @@
+# Local development stack for the ECG API.
+# Run with: docker compose up --build
+#
+# Mount points:
+#   ./api/model/calibrated_model.pt  -> /app/model/calibrated_model.pt
+#   ./api/data                       -> /app/data  (SQLite DB persisted here)
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: api/Dockerfile
+    image: ecg-anomaly-api:latest
+    container_name: ecg-api
+    ports:
+      - "8000:8000"
+    environment:
+      ECG_CHECKPOINT_PATH: /app/model/calibrated_model.pt
+      ECG_DB_PATH: /app/data/reports.db
+      ECG_DEVICE: cpu
+      CORS_ALLOW_ORIGINS: "http://localhost:3000,http://localhost:5173"
+    volumes:
+      # Mount the calibrated model from Phase 3 (place it here before running).
+      - ./model:/app/model:ro
+      # Persist SQLite DB on the host so reports survive container restarts.
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
