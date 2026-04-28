@@ -49,7 +49,7 @@ Design decisions
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 
 import torch
 import torch.nn as nn
@@ -395,8 +395,15 @@ def load_checkpoint(
 
     Checkpoints are dicts with keys: 'model_state', 'cfg', 'epoch', 'val_auc'.
     """
-    ckpt = torch.load(path, map_location=device)
-    cfg = cfg or ModelConfig(**ckpt.get("cfg", {}))
-    model = ECGAnomalyDetector(cfg).to(device)
-    model.load_state_dict(ckpt["model_state"])
+    ckpt = torch.load(path, map_location=device, weights_only=False)
+    # Support both wrapped checkpoints {"model_state": ..., "cfg": ...}
+    # and bare state dicts saved directly with torch.save(model.state_dict(), path).
+    if "model_state" in ckpt:
+        state_dict = ckpt["model_state"]
+        cfg = cfg or ModelConfig(**{k: v for k, v in ckpt.get("cfg", {}).items()
+                                    if k in {f.name for f in fields(ModelConfig)}})
+    else:
+        state_dict = ckpt
+    model = ECGAnomalyDetector(cfg or ModelConfig()).to(device)
+    model.load_state_dict(state_dict)
     return model
