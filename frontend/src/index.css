@@ -2,45 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* App-level custom styles */
 @layer base {
   html {
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #f5f6fa;
+  }
+  body {
+    background-color: #f5f6fa;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-4 py-2.5
-           text-sm font-medium transition-colors focus:outline-none
-           focus:ring-2 focus:ring-offset-2 focus:ring-brand-500
+    @apply inline-flex items-center justify-center rounded-2xl px-5 py-3
+           text-sm font-semibold transition-colors focus:outline-none
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-primary {
-    @apply btn bg-brand-600 text-white hover:bg-brand-700
-           dark:bg-brand-500 dark:hover:bg-brand-600;
+    @apply btn bg-brand-500 text-white hover:bg-brand-600;
   }
   .btn-secondary {
-    @apply btn bg-slate-200 text-slate-900 hover:bg-slate-300
-           dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600;
+    @apply btn bg-slate-100 text-slate-800 hover:bg-slate-200;
   }
   .btn-ghost {
-    @apply btn bg-transparent text-slate-700 hover:bg-slate-100
-           dark:text-slate-200 dark:hover:bg-slate-800;
+    @apply btn bg-transparent text-brand-500 hover:bg-brand-50;
   }
   .card {
-    @apply bg-white dark:bg-slate-800 rounded-xl shadow-sm
-           border border-slate-200 dark:border-slate-700 p-4;
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100 p-4;
   }
   .badge {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5
-           text-xs font-medium ring-1 ring-inset;
+           text-xs font-semibold;
+  }
+  /* bottom-nav safe spacing */
+  .page-content {
+    @apply pb-24;
   }
 }
 
-/* Hide Plotly's bulky modebar unless hovered */
+/* Hide Plotly modebar unless hovered */
 .js-plotly-plot .modebar {
   opacity: 0;
   transition: opacity 0.2s;
@@ -49,23 +51,12 @@
   opacity: 1;
 }
 
-/* Loading skeleton animation */
+/* Skeleton animation */
 @keyframes skeleton-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50%       { opacity: 0.45; }
 }
 .skeleton {
   animation: skeleton-pulse 1.6s ease-in-out infinite;
-  background: linear-gradient(90deg,
-    rgba(226, 232, 240, 1),
-    rgba(226, 232, 240, 0.6),
-    rgba(226, 232, 240, 1));
-  background-size: 200% 100%;
-}
-.dark .skeleton {
-  background: linear-gradient(90deg,
-    rgba(51, 65, 85, 1),
-    rgba(51, 65, 85, 0.6),
-    rgba(51, 65, 85, 1));
-  background-size: 200% 100%;
+  @apply bg-slate-200 rounded-xl;
 }

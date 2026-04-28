@@ -5,19 +5,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Medical-app palette: calming, high-contrast, readable on small screens.
         brand: {
-          50:  '#eff6ff',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          50:  '#fff0f1',
+          100: '#ffe0e2',
+          200: '#ffc2c6',
+          500: '#e84c5a',
+          600: '#d43d4b',
+          700: '#be2f3b',
         },
         risk: {
-          none:     '#10b981',  // green
-          possible: '#f59e0b',  // amber
-          likely:   '#f97316',  // orange
-          high:     '#ef4444',  // red
+          none:     '#22c55e',
+          possible: '#f59e0b',
+          likely:   '#f97316',
+          high:     '#ef4444',
         },
+        surface: '#f5f6fa',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
