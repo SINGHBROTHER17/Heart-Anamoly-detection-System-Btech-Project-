@@ -1,0 +1,33 @@
+# Kaggle credentials — never commit the filled-in version
+kaggle_credentials.json
+kaggle.json
+.kaggle/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Model checkpoints and data (large files)
+*.pt
+*.pth
+*.ckpt
+api/model/
+data/
+ptbxl/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Misc
+.DS_Store
+*.log
+
+# Claude Code local config + dev preview scratch
+.claude/
+frontend/torso-preview.html

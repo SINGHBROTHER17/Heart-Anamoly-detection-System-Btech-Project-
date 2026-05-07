@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage.jsx';
 import UploadPage from './pages/UploadPage.jsx';
 import ReportPage from './pages/ReportPage.jsx';
 import HistoryPage from './pages/HistoryPage.jsx';
-import ElectrodePage from './pages/ElectrodePage.jsx';
+import ElectrodePlacementGuide from './pages/ElectrodePlacementGuide.jsx';
 import ArticlesPage from './pages/ArticlesPage.jsx';
 import SettingsPage from './pages/SettingsPage.jsx';
 
@@ -16,7 +16,7 @@ export default function App() {
         <Route path="/analyze"         element={<UploadPage />} />
         <Route path="/report/:id"      element={<ReportPage />} />
         <Route path="/reports"         element={<HistoryPage />} />
-        <Route path="/electrode-guide" element={<ElectrodePage />} />
+        <Route path="/electrode-guide" element={<ElectrodePlacementGuide />} />
         <Route path="/articles"        element={<ArticlesPage />} />
         <Route path="/settings"        element={<SettingsPage />} />
         <Route path="*"                element={<NotFound />} />

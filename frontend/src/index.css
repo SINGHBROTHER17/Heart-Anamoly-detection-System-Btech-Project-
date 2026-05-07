@@ -51,6 +51,46 @@
   opacity: 1;
 }
 
+/* ── Electrode placement animations ──────────────────────────────── */
+@keyframes electrode-pulse {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  50%      { opacity: 0.7; filter: brightness(1.2); }
+}
+@keyframes electrode-ring-pulse {
+  0%   { transform: scale(1);   opacity: 0.9; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes electrode-ring-expand {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.65; }
+  80%  { transform: translate(-50%, -50%) scale(1.9); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1.9); opacity: 0; }
+}
+@keyframes confirmed-pop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+@keyframes guide-path-dash {
+  to { stroke-dashoffset: -8; }
+}
+
+.electrode-ring { animation: electrode-ring-pulse 1.6s ease-out infinite; }
+.electrode-confirmed { animation: confirmed-pop 0.35s ease-out forwards; }
+
+/* Smooth marker state transitions for the photo-overlay torso */
+.marker-transition {
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Animated dashed guide path between electrodes */
+.guide-path-anim {
+  animation: guide-path-dash 1s linear infinite;
+}
+
 /* Skeleton animation */
 @keyframes skeleton-pulse {
   0%, 100% { opacity: 1; }
