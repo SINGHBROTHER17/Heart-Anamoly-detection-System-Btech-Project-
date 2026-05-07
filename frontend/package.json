@@ -6,7 +6,7 @@
   "description": "Mobile-first web app for the ECG Anomaly Detection system",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx"
   },
@@ -16,7 +16,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-plotly.js": "^2.6.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
