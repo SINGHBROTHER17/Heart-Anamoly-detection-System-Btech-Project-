@@ -29,5 +29,4 @@ frontend/dist/
 *.log
 
 # Claude Code local config + dev preview scratch
-.claude/
 frontend/torso-preview.html
